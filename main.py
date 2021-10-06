@@ -74,10 +74,43 @@ def test_is_palindrome():
     assert not is_palindrome(2783)
 
 
+def print_menu():
+    print('1. Problema 7')
+    print('2. Problema 8')
+    print('3. Problema 5')
+    print('4. Exit')
+
+    n = input('Alegeti o optiune: ')
+
+    if n == '1':
+        nr = input('Introduceti un numar: ')
+        nr = int(nr)
+        if is_antipalindrome(nr):
+            print(nr, ' este antipalindrom')
+        else:
+            print(nr, ' nu este antipalindrom')
+    elif n == '2':
+        nr = input('Introduceti un numar: ')
+        nr = int(nr)
+        print('Numrul', nr, 'in bazza 2 este', get_base_2(nr))
+    elif n == '3':
+        nr = input('Introduceti un numar: ')
+        nr = int(nr)
+        if is_palindrome(nr):
+            print(nr, ' este palindrom')
+        else:
+            print(nr, ' nu este palindrom')
+    elif n == '4':
+        exit(0)
+
+
 def main():
     test_is_antipalindrome()
     test_get_base_2()
     test_is_palindrome()
+
+    while True:
+        print_menu()
 
 
 if __name__ == "__main__":
