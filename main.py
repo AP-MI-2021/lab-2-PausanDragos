@@ -20,7 +20,7 @@ def is_antipalindrome(n):
     return True
 
 
-# Problema 8: Sa se treaca un numar din baza 10 in baza 2
+# Problema 8: Sa se treaca un numar din baza 10 in baza 2;
 
 
 def get_base_2(n):
@@ -35,6 +35,28 @@ def get_base_2(n):
     return str(bin(int(n))).removeprefix('0b')
 
 
+# Problema 5: Sa se verifice daca un numar e palindrom (problema rezolvata in timpul laboratorului 2)
+
+
+def is_palindrome(n):
+    """
+    Introducem intr-un vector cifrele numarului n
+    Verificam daca cifrele egal departate de mijlocul numarului sunt diferite, iar daca gasim vreo astfel de
+    pereche atunci programul va returna False
+    In caz contrar, acesta va returna True
+    :param n: numarul de verificat
+    :return: True sau False in functie de proprietatea numarului de a fi palindrom
+    """
+    v = []
+    while n > 0:
+        v.append(n % 10)
+        n //= 10
+    for i in range(len(v)//2):
+        if v[i] != v[len(v)-i-1]:
+            return False
+    return True
+
+
 def test_is_antipalindrome():
     assert not is_antipalindrome(2773)
     assert not is_antipalindrome(23532)
@@ -46,9 +68,16 @@ def test_get_base_2():
     assert get_base_2(7) == "111"
 
 
+def test_is_palindrome():
+    assert not is_palindrome(2773)
+    assert is_palindrome(23532)
+    assert not is_palindrome(2783)
+
+
 def main():
     test_is_antipalindrome()
     test_get_base_2()
+    test_is_palindrome()
 
 
 if __name__ == "__main__":
